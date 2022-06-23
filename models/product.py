@@ -9,7 +9,6 @@ class ProductModel(db.Model):
     price = db.Column(db.Float(precision=2))
     stock = db.Column(db.Integer)
 
-    # order_detail = db.relationship('OrderDetailModel', lazy='dynamic')
     order_detail = db.relationship('OrderDetailModel', backref='product')
 
     def __init__(self, name, price, stock):

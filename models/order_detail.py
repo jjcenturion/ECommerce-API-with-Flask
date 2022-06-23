@@ -8,10 +8,8 @@ class OrderDetailModel(db.Model):
     quantity = db.Column(db.Integer)
 
     order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
-    # order = db.relationship('OrderModel')
-    #
+
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
-    # product = db.relationship('ProductModel')
 
     def __init__(self, quantity, order_id, product_id):
         self.quantity = quantity
@@ -31,6 +29,9 @@ class OrderDetailModel(db.Model):
 
     def delete_from_db(self):
         db.session.delete(self)
+        db.session.commit()
+
+    def update_to_db(self):
         db.session.commit()
 
 

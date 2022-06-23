@@ -1,4 +1,5 @@
 from flask_restful import Resource, reqparse
+from flask_jwt import jwt_required
 
 from models.product import ProductModel
 
@@ -29,6 +30,7 @@ class Product(Resource):
 
         return product.json()
 
+    @jwt_required()
     def delete(self, name):
         product = ProductModel.find_by_name(name)
 
@@ -38,6 +40,7 @@ class Product(Resource):
         else:
             return {'message': 'Product not found.'}, 404
 
+    @jwt_required()
     def get(self, name):
         product = ProductModel.find_by_name(name)
 

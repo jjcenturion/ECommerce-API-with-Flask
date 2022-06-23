@@ -1,17 +1,19 @@
 from flask import Flask
 from flask_restful import Api
+from flask_jwt import JWT
+
 from db import db
-
-
+from security import authenticate, identity
+from resources.user import UserRegister
 from resources.product import Product, ProductList, ChangeStock
-from resources.order import Order, OrderList
+from resources.order import Order, OrderList, OrderTotal
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
-
-api = Api(app)                 # permite añadir facilmente las rutas del resources
+app.secret_key = 'jose'
+api = Api(app)                      # permite añadir las rutas del resources
 
 
 @app.before_first_request
@@ -19,14 +21,15 @@ def create_tables():
     db.create_all()
 
 
+jwt = JWT(app, authenticate, identity)  # /auth
+
 api.add_resource(Product, '/product/<string:name>')
 api.add_resource(Order, '/order/<string:datetime_str>')
 api.add_resource(OrderList, '/orders')
 api.add_resource(ProductList, '/products')
 api.add_resource(ChangeStock, '/change_stock/<string:name>')
-
-
-
+api.add_resource(OrderTotal, '/total/<string:datetime_str>')
+api.add_resource(UserRegister, '/register')
 
 
 if __name__ == '__main__':
