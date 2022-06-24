@@ -1,0 +1,391 @@
+{
+	"info": {
+		"_postman_id": "827a520d-bb26-4a80-9a08-80476c77a6d6",
+		"name": "API Ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "product/<name>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/product/sofa",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"sofa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/<name>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"price\": 20,\r\n    \"stock\": 2    \r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/product/sofa",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"sofa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change_stock/<string:name>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"stock\": 4 \r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/change_stock/sofa",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"change_stock",
+						"sofa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "product/<name>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/product/sofa",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"product",
+						"sofa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order/<datetime_str>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/order/2022-06-21T13:18:05",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"2022-06-21T13:18:05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order/<datetime_str>",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "JWT {{jwt_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 2,\r\n    \"name_product\": \"silla\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/order/2022-06-21T13:18:05",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"2022-06-21T13:18:05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orders",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "order/<datetime_str>",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 2,\r\n    \"name_product\": \"sofa\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/order/2022-06-21T13:18:05",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"order",
+						"2022-06-21T13:18:05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "total/<string:datetime_str>",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/total/2022-06-21T13:18:05",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"total",
+						"2022-06-21T13:18:05"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"tests[\"Access token no vacio\"] = jsonData.access_token !== undefined;\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"jwt_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jcenturion\",\r\n    \"password\": \"qwerty\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"jcenturion\",\r\n    \"password\": \"qwerty\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
