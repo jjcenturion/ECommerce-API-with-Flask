@@ -13,7 +13,9 @@ class Product(Resource):
                         )
     parser.add_argument('stock',
                         type=int,
-                        required=True)
+                        required=True,
+                        help="This field cannot be left blank!"
+                        )
 
     def put(self, name):
         data = Product.parser.parse_args()

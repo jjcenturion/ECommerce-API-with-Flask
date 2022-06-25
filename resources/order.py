@@ -1,5 +1,5 @@
 import requests
-import locale
+
 from datetime import datetime
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
@@ -108,17 +108,29 @@ class Order(Resource):
         return {'message': 'Order not found'}, 404
 
     def get_total_usd(self, date_time):
-        locale.setlocale(locale.LC_ALL, 'nl_NL')
         order = Order()
         total_ARS = order.get_total(date_time)
 
         ENDPOINT = "https://www.dolarsi.com/api/api.php?type=valoresprincipales"
 
-        response = requests.get(ENDPOINT).json()
+        try:
+            r = requests.get(ENDPOINT)
+            r.raise_for_status()
+            response = r.json()
+        except requests.exceptions.HTTPError as err:
+            return {'message': 'Http Error'}
+        except requests.exceptions.ConnectionError as errc:
+            return {'message': 'Http ConnectionError'}
+        except requests.exceptions.Timeout as errt:
+            return {'message': 'Http Timeout'}
 
         venta_usd_blue = response[1]['casa']['venta']
+        usd_f = float(venta_usd_blue.replace('.','').replace(',','.'))
 
-        return total_ARS/locale.atof(venta_usd_blue)
+        try:
+            return total_ARS/usd_f
+        except ZeroDivisionError:
+            return {'message:': 'precio de usd cero'}
 
 
 class OrderTotal(Resource):
